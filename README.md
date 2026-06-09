@@ -143,6 +143,42 @@ npm run dev
 
 ---
 
+## 🔍 Example Analysis
+
+**Input:** Vendor contract with unlimited liability clause
+
+**Output:**
+```json
+{
+  "risk_score": 9.5,
+  "final_status": "HIGH_RISK_ESCALATED",
+  "flagged_clauses": ["Unlimited Liability", "Auto-Renewal", "One-Sided Termination"],
+  "clause_evidence": [
+    {
+      "clause_name": "Unlimited Liability",
+      "evidence": "The Client accepts unlimited liability for any breach",
+      "impact": "Potential uncapped financial exposure devastating to a startup"
+    }
+  ],
+  "negotiation": "Cap liability at total fees paid in last 12 months",
+  "final_recommendation": "Do Not Sign Without Legal Review"
+}
+```
+
+**Input:** Standard freelance consulting agreement
+
+**Output:**
+```json
+{
+  "risk_score": 2.0,
+  "final_status": "APPROVED",
+  "flagged_clauses": [],
+  "final_recommendation": "Safe to Sign"
+}
+```
+
+---
+
 ## 👩‍💻 Built By
 
 **Asmani Roy** — Computer Engineering, Thapar Institute of Engineering & Technology  
