@@ -16,6 +16,9 @@ Startup founders sign vendor agreements, SaaS contracts, and partnership deals w
 ## ⚡ Live Demo
 
 > Paste any contract → Receive a risk score, clause analysis, business impact assessment, and negotiation recommendations in under 10 seconds.
+**🌐 Live Demo:** https://contractshield-ai-eight.vercel.app
+
+**🔧 Backend API:** https://contractshield-ai-5s94.onrender.com
 
 ---
 
