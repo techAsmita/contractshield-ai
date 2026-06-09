@@ -236,6 +236,30 @@ export default function App() {
                 </div>
               </Card>
             </div>
+
+            {/* Final Recommendation */}
+            <div className={`rounded-2xl p-6 border ${
+              result.final_status === "APPROVED" 
+                ? "bg-green-500/10 border-green-500/30" 
+                : result.final_status === "REVIEW_RECOMMENDED"
+                ? "bg-yellow-500/10 border-yellow-500/30"
+                : "bg-red-500/10 border-red-500/30"
+            }`}>
+              <h3 className="text-slate-300 font-semibold text-sm uppercase tracking-wider mb-3">Final Recommendation</h3>
+              <p className={`text-2xl font-bold mb-2 ${
+                result.final_status === "APPROVED" 
+                  ? "text-green-400" 
+                  : result.final_status === "REVIEW_RECOMMENDED"
+                  ? "text-yellow-400"
+                  : "text-red-400"
+              }`}>
+                {result.final_status === "APPROVED" && "✅ Safe to Sign"}
+                {result.final_status === "REVIEW_RECOMMENDED" && "⚠️ Review Before Signing"}
+                {result.final_status === "HIGH_RISK_ESCALATED" && "🚨 Do Not Sign Without Legal Review"}
+              </p>
+              <p className="text-slate-400 text-sm">{result.decision_reason}</p>
+            </div>      
+
           </div>
         )}
       </div>
