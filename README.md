@@ -15,7 +15,7 @@ Startup founders sign vendor agreements, SaaS contracts, and partnership deals w
 
 ## ⚡ Live Demo
 
-> Paste any contract → Get a full risk report in under 10 seconds
+> Paste any contract → Receive a risk score, clause analysis, business impact assessment, and negotiation recommendations in under 10 seconds.
 
 ---
 
@@ -25,7 +25,7 @@ Four AI agents run concurrently using `asyncio.gather()`:
 
 | Agent | Role | Output |
 |-------|------|--------|
-| Legal Risk Agent | Detects dangerous clauses | Risk score 0–10 + flagged clauses |
+| Legal Risk Agent | Detects dangerous clauses | Risk score 0–10 + flagged clauses with evidence |
 | Compliance Agent | Checks GDPR, data handling | Authorized / Not Authorized |
 | Business Impact Agent | Translates findings to plain English | Key business concerns |
 | Negotiation Agent | Suggests safer alternatives | Actionable negotiation moves |
@@ -78,6 +78,18 @@ Founder Dashboard
 | Concurrency | asyncio.gather() |
 | Validation | Pydantic |
 | Background Tasks | FastAPI BackgroundTasks |
+
+---
+
+## 🔍 Clause Evidence
+
+ContractShield AI doesn't just flag risky clauses — it shows you exactly why:
+
+| Field | Example |
+|-------|---------|
+| Finding | Unlimited Liability |
+| Evidence | "The Client accepts unlimited liability for any breach" |
+| Impact | Client could face unlimited financial losses in case of a breach |
 
 ---
 
