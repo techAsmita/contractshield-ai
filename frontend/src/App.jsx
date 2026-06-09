@@ -53,13 +53,13 @@ export default function App() {
 
   const analyze = async () => {
     if (!contractTitle.trim()) {
-  setError("Please enter a contract title.");
-  return;
-}
-if (contractText.trim().length < 50) {
-  setError("Please enter at least 50 characters of contract text.");
-  return;
-}
+      setError("Please enter a contract title.");
+      return;
+    }
+    if (contractText.trim().length < 50) {
+      setError("Please enter at least 50 characters of contract text.");
+      return;
+    }
     setLoading(true);
     setError(null);
     setResult(null);
@@ -71,7 +71,7 @@ if (contractText.trim().length < 50) {
         body: JSON.stringify({
           contract_text: contractText,
           founder_name: founderName || null,
-          contract_title: contractTitle || null,
+          contract_title: contractTitle,
         }),
       });
 
@@ -109,12 +109,11 @@ if (contractText.trim().length < 50) {
             onChange={e => setFounderName(e.target.value)}
           />
           <input
-  className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
-  placeholder="Contract title *"
-  value={contractTitle}
-  onChange={e => setContractTitle(e.target.value)}
-  required
-/>
+            className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+            placeholder="Contract title *"
+            value={contractTitle}
+            onChange={e => setContractTitle(e.target.value)}
+          />
         </div>
 
         <textarea
@@ -176,6 +175,29 @@ if (contractText.trim().length < 50) {
                 </div>
               </Card>
             </div>
+
+            {/* Clause Evidence */}
+            {result.legal_risk.clause_evidence && result.legal_risk.clause_evidence.length > 0 && (
+              <Card title="Clause Evidence">
+                <div className="space-y-4">
+                  {result.legal_risk.clause_evidence.map((item, i) => (
+                    <div key={i} className="bg-slate-700/30 rounded-xl p-4 border border-slate-600/30">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="bg-red-500/20 text-red-400 border border-red-500/20 px-2 py-0.5 rounded text-xs font-semibold">{item.clause_name}</span>
+                      </div>
+                      <div className="mb-2">
+                        <span className="text-slate-500 text-xs uppercase tracking-wider">Evidence</span>
+                        <p className="text-slate-300 text-sm mt-1 italic border-l-2 border-slate-600 pl-3">"{item.evidence}"</p>
+                      </div>
+                      <div>
+                        <span className="text-slate-500 text-xs uppercase tracking-wider">Impact</span>
+                        <p className="text-yellow-400 text-sm mt-1">{item.impact}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            )}
 
             {/* Business Impact */}
             <Card title="Business Impact">

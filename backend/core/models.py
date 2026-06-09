@@ -15,10 +15,17 @@ class ContractInput(BaseModel):
     contract_title: str = Field(..., min_length=1, description="Title or name of the contract")
 
 
+class ClauseEvidence(BaseModel):
+    clause_name: str
+    evidence: str
+    impact: str
+
+
 class LegalRiskOutput(BaseModel):
     risk_score: float = Field(..., ge=0, le=10)
     risk_explanation: str
     flagged_clauses: list[str]
+    clause_evidence: list[ClauseEvidence]
 
 
 class ComplianceOutput(BaseModel):
